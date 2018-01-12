@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Aditya  Kishan </title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+</head>
+<body>
+	<p class="titl" align="center"> BMI Calculator </p>
+  <div class="wrapper">
+	<form class="pure-form" method="POST" action="/" >
+		<fieldset>
+	<div class="pure-control-group"  align="center">
+
+					<input id="weight" type="number" placeholder="Enter weight here" name="weight">
+					<span class="pure-form-message-inline">This is a required field.</span>
+
+	</div>
+	<br>
+			<div class="pure-control-group"  align="center">
+
+
+            <input id="height" type="number" placeholder="Enter your height here" name="height">
+            <span class="pure-form-message-inline">This is a required field.</span>
+
+      </div>
+	<br>
+		<div class="wrapper" align="center">
+				<button type="submit" class="pure-button pure-button-primary" value="submit"> Calculate BMI! </button>
+		</div>
+</fieldset>
+</form>
+</div>
+<br>
+
+<div>
+
+	{% if bmi %}
+		<p> Your BMI is: {{ bmi }} </p>
+	{% endif %}
+
+</div>
+
+</body>
+</html>

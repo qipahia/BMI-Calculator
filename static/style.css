@@ -1,0 +1,14 @@
+body{
+  background-color: tomato;
+}
+
+p{
+  text-align:center;
+  color: white;
+}
+
+.titl{
+  padding-top: 100px;
+  color: blue;
+  font-size: 100px;
+}
