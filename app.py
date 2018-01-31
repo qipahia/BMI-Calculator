@@ -1,6 +1,12 @@
 from flask import Flask, render_template, request
+from models.user import User
+from common.database import Database
 
 app=Flask(__name__)
+
+@app.before_first_request
+def initialize_database():
+    Database.initialize()
 
 @app.route('/', methods= ['POST', 'GET'])
 
@@ -19,7 +25,22 @@ def welcome():
     if result==100000:
         return render_template("index.html", bmi = 0)
     else:
-        return render_template("index.html", bmi = result)
+  
+        new_user = User("Aaron Gonzalez", 170,60)
+        new_user.save_to_mongo()
+       
+        user = User.find_by_id('0ff4a6d4e2ac4555adfa149d0c201241')
+	
+        if user is not None:
+        
+            height = user.height
+            weight = user.weight
+            bmi_retrieved = ((weight/height)/height)*10000
+    
+            return render_template("index.html",bmi=result, height=height,weight=weight,bmi_retrieved=bmi_retrieved)
 
+        else:
+            return render_template("index.html",bmi=result)
 
-app.run()
+if __name__=='__main__':
+    app.run()

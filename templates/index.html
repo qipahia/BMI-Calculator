@@ -39,6 +39,14 @@
 		<p> Your BMI is: {{ bmi }} </p>
 	{% endif %}
 
+	{% if height!= None %}
+		<p> Retrieved Data</p>
+		<p> Height:  {{height}} </p>
+		<p> Weight:  {{weight}} </p>
+		<p> BMI   :  {{bmi_retrieved}}</p>
+	
+	{% endif %}
+
 </div>
 
 </body>
